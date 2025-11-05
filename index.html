@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <h1 class="text-center text-primary mt-4 mb-4">Product Managemnt System</h1>
+    <div class="container">
+        <div class="row">
+            <div class="form-floating mb-3">
+                <input oninput="validateProductInputs(this)" type="text" class="form-control" id="productName"
+                    placeholder="name">
+                <div class="alert alert-danger d-none" role="alert">
+                    Should start with capital letter and from 2-10 small letters
+                </div>
+                <label for="productName">Product Name</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input oninput="validateProductInputs(this)" type="number" class="form-control" id="productPrice"
+                    placeholder="123">
+                <div class="alert alert-danger d-none" role="alert">
+                    Range from 0-10,000
+                </div>
+                <label for="productPrice">Product Price</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input oninput="validateProductInputs(this)" type="text" class="form-control" id="productCategory"
+                    placeholder="type">
+                <div class="alert alert-danger d-none" role="alert">
+                    Category : tv or mobile or screen or laptop
+                </div>
+                <label for="productCategory">Product Category</label>
+            </div>
+            <div class="form-floating">
+                <textarea oninput="validateProductInputs(this)" class="form-control"
+                    placeholder="Leave a description here" id="productDescription"></textarea>
+                <div class="alert alert-danger d-none" role="alert">
+                    You can write from 20-200 chracters and only special symbols :  . ,' " () - are accepted
+                </div>
+                <label for="productDescription">Product Description</label>
+            </div>
+            <div class="form-floating mb-3">
+                <!-- accept any image -->
+                <input type="file" onchange="validateProductInputs(this)" accept="image/" class="form-control" id="productImage" placeholder="type">
+                <div class="alert alert-danger d-none" role="alert">
+                   You can only upload images of .jpeg , .jpg and .png extension
+                </div>
+                <label for="productImage">Product Image</label>
+            </div>
+        </div>
+        <button class="btn btn-primary mt-2 ms-auto d-block" onclick="addProduct()" id="addBtn" disabled> Add</button>
+        <!-- onclick : enables us to call on addPrduct funtion when button is triggered -->
+        <button class="btn btn-success mt-2 ms-auto d-none" id="updateBtn" onclick="updateProduct()">Update</button>
+    </div>
+    <div class="container">
+        <div class="form-floating mb-3 mt-3">
+            <!-- live search -->
+            <!-- oninput : enables us to call on searchProducts() function when we are entering input 
+              this : it describes the element its used in ex:sends info about input element into our function -->
+            <input oninput="searchProducts(this.value)" type="text" class="form-control" id="productSearchInput"
+                placeholder="type">
+            <label for="productSearchInput">Search Product name</label>
+        </div>
+        <table class="table text-center">
+            <thead>
+                <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Actions</th>
+
+                </tr>
+            </thead>
+            <tbody id="tableOfProducts">
+
+            </tbody>
+        </table>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/index.js"></script>
+</body>
+
+</html>
